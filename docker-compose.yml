@@ -1,0 +1,13 @@
+services:
+  master:
+    build: .
+    container_name: hermes-ops
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./workspace:/workspace
+      - ./skills:/root/.hermes/skills
+    env_file:
+      - .env
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
